@@ -1,3 +1,5 @@
+Click Refresh to add a new row
+
 <?php
 $servername = "db";
 $username = "master";
