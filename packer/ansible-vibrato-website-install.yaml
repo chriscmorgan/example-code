@@ -26,8 +26,3 @@
 
     - name: copy docker-compose file stack.yml to server
       copy: src=docker-compose/stack.yml dest=/tmp/ mode=0755
-
-    - name: Run docker compose
-      shell: /usr/local/bin/docker-compose -f stack.yml up -d
-      args:
-        chdir: /tmp/
