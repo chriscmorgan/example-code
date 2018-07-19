@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install web components
+      yum: name={{item}} state=present update_cache=yes
+      with_items:
+        - docker
+
+    - name: ensure docker started
+      service: name=docker state=started enabled=yes
