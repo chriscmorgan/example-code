@@ -24,33 +24,6 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-$sql = "INSERT INTO MyGuests (firstname, lastname, email)
-VALUES ('John', 'Doe', 'john@example.com')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "row created successfully";
-} else {
-    echo "Error creating roe: " . $conn->error;
-}
-
-$result = $conn->query("SELECT * FROM MyGuests");
-
-echo "<table border='1'>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-</tr>";
-
-while($row = mysqli_fetch_array($result))
-{
-echo "<tr>";
-echo "<td>" . $row['firstname'] . "</td>";
-echo "<td>" . $row['lastname'] . "</td>";
-echo "</tr>";
-}
-echo "</table>";
-$conn->close();
-
 
 ?>
 

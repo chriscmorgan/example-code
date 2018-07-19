@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Packer Build') {
       steps {
-        sh "cd packer;/usr/bin/packer build webserver.json"
+        sh "#cd packer;#/usr/bin/packer build webserver.json"
       }
     }
     stage('Terraform: Init') {

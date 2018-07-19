@@ -7,6 +7,10 @@ resource "aws_launch_configuration" "vibrato-lc" {
   lifecycle {
     create_before_destroy = true
   }
+  user_data = <<EOF
+    #!/bin/bash
+    /usr/local/bin/docker-compose -f /tmp/stack.yml up -d
+    EOF
 }
 
 resource "aws_autoscaling_group" "vibrato-ag" {
