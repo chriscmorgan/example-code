@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install web components
+      yum: name={{item}} state=present update_cache=yes
+      with_items:
+        - docker
+
+    - name: ensure docker started
+      service: name=docker state=started enabled=yes
+
+    - name: copy website source code to server
+      copy: src=../website/ dest=/tmp mode=0755
+
+    - name: copy website source code to server
+      copy: src=Dockerfile dest=/tmp mode=0755
+
+    - name: build php docker image
+      command: docker build -t vibrato/website -f /tmp/Dockerfile .
+
+    - name: build php docker image
+      command: docker run -d -p 80:80 --name vibrato-website vibrato/website
