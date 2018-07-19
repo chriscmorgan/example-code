@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Terraform: apply') {
       steps {
-        sh "cd terraform; terraform detroy --auto-approve"
+        sh "cd terraform; terraform apply --auto-approve"
       }
     }
 
